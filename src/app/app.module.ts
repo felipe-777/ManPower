@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    NgToastModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
