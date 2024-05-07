@@ -1,10 +1,36 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand">MenPower</a>
-      <div>
-        <h4>
-            Hello, 
-        </h4>
-      </div>
+      <a class="navbar-brand nm-txt">Hello, {{fullName}}</a>
+        <button (click)="Logout()" class="log-out-button btn "><i class="fa fa-sign-out"></i></button>
     </div>
-  </nav>
+</nav>
+
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Registro de Horas</h2>
+  <table class="table table-striped table-bordered text-center">
+      <thead class="thead-dark">
+          <tr>
+              <th>Quantidade</th>
+              <th>Entrada</th>
+              <th>Pausa</th>
+              <th>Retorno</th>
+              <th>Saída</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let point of points; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{point.start}}</td>
+              <td>{{point.break}}</td>
+              <td>{{point.return}}</td>
+              <td>{{point.end}}</td>
+          </tr>
+      </tbody>
+  </table>
+  <div class="text-center">
+    <button class="btn btn-primary btn-bater-ponto">Bater Ponto</button>
+  </div>
+</div>
+
+

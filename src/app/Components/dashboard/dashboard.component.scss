@@ -1,0 +1,49 @@
+.log-out-button {
+    background-color: #4343ff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-out-button:hover {
+    background-color: #0d0d6d;
+}
+
+.nm-txt{
+    color: #4343ff;
+}
+
+.navbar {
+    background-color: #dbdbfb; 
+    border-bottom: 1px solid #ccc; 
+    padding: 10px; 
+}
+
+
+.container {
+    margin-top: 50px; 
+}
+
+.table {
+    border-radius: 10px; 
+}
+
+.table thead th {
+    background-color: #dbdbfb; 
+    color: black;
+}
+
+.table tbody td {
+    background-color: #e6e6ff;
+}
+
+.btn-bater-ponto {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}

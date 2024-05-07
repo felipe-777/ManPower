@@ -8,20 +8,24 @@ export class UserStoreService {
 
   private fullName$ = new BehaviorSubject<string>("");
   private role$ = new BehaviorSubject<string>("");
+  private userId$ = new BehaviorSubject<number>(0);
 
   constructor() { }
 
   public getRoleFromStore(){
-    this.role$.asObservable();
+    return this.role$.asObservable();
   }
 
   public setRoleForStore(role:string){
     this.role$.next(role)
   }
 
+  public getUserIdFromStore(){
+    return this.userId$.asObservable();
+  }
   
   public getFullNameFromStore(){
-    this.fullName$.asObservable();
+    return this.fullName$.asObservable();
   }
 
   public setFullNameForStore(fullName:string){
