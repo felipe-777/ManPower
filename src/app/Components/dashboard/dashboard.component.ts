@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
   public users : any = [];
   public points : any  = [];
   public fullName: string = "";
+  initialDate: Date = new Date();
+  finalDate: Date = new Date(this.initialDate);
   constructor(
     private api : ApiService,
     private auth : AuthService,
@@ -27,16 +29,24 @@ export class DashboardComponent implements OnInit {
       this.users = res;
     });
 
+    // const today = new Date();
+    // const tomorrow = new Date();
+    // tomorrow.setDate(tomorrow.getDate() + 1); 
+  
+    // const initialDate = today;
+    // const finalDate = tomorrow;
+
+    // this.api.getTimeKeeping(initialDate, finalDate).subscribe(res => {
+    //   this.points = res;
+    // });
     const today = new Date();
     const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1); 
-  
-    const initialDate = today;
-    const finalDate = tomorrow;
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    this.initialDate = today;
+    this.finalDate = tomorrow;
 
-    this.api.getTimeKeeping(initialDate, finalDate).subscribe(res => {
-      this.points = res;
-    });
+    this.loadTimekeeping();
 
     this.userStore.getFullNameFromStore()
     .subscribe(val=>{
@@ -61,6 +71,26 @@ export class DashboardComponent implements OnInit {
 
   Logout(){
     this.auth.Logout();
+  }
+
+  loadTimekeeping() {
+    const timezoneOffset = new Date().getTimezoneOffset();
+
+    const initialDateUTC = new Date(this.initialDate);
+    const finalDateUTC = new Date(this.finalDate);
+
+    const initialDate = new Date(initialDateUTC.getTime() + (timezoneOffset * 60000));
+    const finalDate = new Date(finalDateUTC.getTime() + (timezoneOffset * 60000));
+    
+    console.log(initialDate)
+    console.log(finalDate)
+    this.api.getTimeKeeping(initialDate, finalDate).subscribe(res => {
+      this.points = res;
+    });
+  }
+
+  filterByDate() {
+    this.loadTimekeeping();
   }
 
 }
