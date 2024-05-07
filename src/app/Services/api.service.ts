@@ -41,4 +41,16 @@ export class ApiService {
       })
     );
   }
+
+  saveTimekeeping(){
+    let userIdfromToken = this.auth.getIdUserFromToken();
+    return this.userStore.getUserIdFromStore().pipe(
+      switchMap(val => {
+        const userId = val || userIdfromToken;
+         
+        return this.http.post<any>(`${this.baseUrl}createtk`, userId, { headers: { 'Content-Type': 'application/json' } });
+      })
+    );
+  }
+
 }

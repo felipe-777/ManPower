@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { UserStoreService } from 'src/app/Services/user-store.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private api : ApiService,
     private auth : AuthService,
-    private userStore: UserStoreService
+    private userStore: UserStoreService,
+    private toast: NgToastService
   ){}
 
   ngOnInit() {
@@ -33,7 +35,6 @@ export class DashboardComponent implements OnInit {
     const finalDate = tomorrow;
 
     this.api.getTimeKeeping(initialDate, finalDate).subscribe(res => {
-      console.log(res);
       this.points = res;
     });
 
@@ -42,8 +43,20 @@ export class DashboardComponent implements OnInit {
       let fullNameFromToken = this.auth.getfullNameFromToken();
       this.fullName = val || fullNameFromToken 
     })
+  }
 
-    //colocar dados nos campos da tabela
+  createTimekeeping(){
+      this.api.saveTimekeeping()
+      .subscribe({
+        next:(res=>{
+          console.log(res.message);
+          this.toast.success({detail:"SUCCESS", summary:res.message, duration: 5000})
+          location.reload();
+        })
+        ,error:(err)=>{ 
+          this.toast.error({detail:"ERROR", summary:err.message, duration: 5000});
+        }
+      })
   }
 
   Logout(){

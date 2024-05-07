@@ -11,13 +11,15 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { NgToastModule } from 'ng-angular-popup';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
