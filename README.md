@@ -1,6 +1,22 @@
 # MenPower
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+Configuração de ambiente:
+
+API{
+
+-Certifique-se de ter o Node.js (v18.13.0), o AngularCli (15.1.0) e o NPM (8.19.3) instalados na sua máquina.
+
+-Clone o repositório com: git clone https://github.com/felipe-777/ManPower.git
+
+-Navegue até o diretório do projeto e execute o comando: npm install
+
+-Após a instalação das dependências, execute o seguinte comando para iniciar o servidor de desenvolvimento: ng serve
+
+-Abra uma aba do navegador e acesse: http://localhost:4200/ 
+}
+
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.0.
 
 ## Development server
 
