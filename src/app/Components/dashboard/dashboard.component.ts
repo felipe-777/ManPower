@@ -81,9 +81,7 @@ export class DashboardComponent implements OnInit {
 
     const initialDate = new Date(initialDateUTC.getTime() + (timezoneOffset * 60000));
     const finalDate = new Date(finalDateUTC.getTime() + (timezoneOffset * 60000));
-    
-    console.log(initialDate)
-    console.log(finalDate)
+
     this.api.getTimeKeeping(initialDate, finalDate).subscribe(res => {
       this.points = res;
     });
